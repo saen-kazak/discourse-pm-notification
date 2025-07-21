@@ -1,0 +1,21 @@
+{{#if this.canEdit}}
+  <div class="pm-notification-control">
+    <h3>User Notification Settings</h3>
+    <ul>
+      {{#each this.users as |user|}}
+        <li>
+          <strong>{{user.username}}</strong> —
+          <select
+            onchange={{action this.changeNotificationLevel user.username value="target.value"}}
+            disabled={{this.loading}}
+          >
+            <option value="0" selected={{eq user.notification_level 0}}>Muted</option>
+            <option value="1" selected={{eq user.notification_level 1}}>Normal</option>
+            <option value="2" selected={{eq user.notification_level 2}}>Tracking</option>
+            <option value="3" selected={{eq user.notification_level 3}}>Watching</option>
+          </select>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+{{/if}}
